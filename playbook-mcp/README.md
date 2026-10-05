@@ -1,46 +1,66 @@
-# Playbook MCP plugin
+# Playbook
 
-Connects Claude to your [Playbook](https://www.playbook.com) workspace via the
-hosted Playbook MCP server (`https://mcp.playbook.com`), so you can find, move,
-copy, tag, and organize assets and boards through natural language.
+Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) workspace. Playbook is a digital asset manager for creative teams, and this plugin lets an assistant search your images, video and documents, organize them into boards, tag them, upload new files, review version history, and share a board through a link or a published page.
 
-This plugin only **registers** the MCP server connection — the tools run on the
-hosted server, which wraps Playbook's REST API. Connecting authenticates via
-Playbook OAuth (no token is stored in this plugin).
+## What is in the plugin
 
-## Tools exposed
+- **A connection to Playbook's hosted MCP server** at `https://mcp.playbook.com/mcp`. The tools run on that server, which calls Playbook's REST API as the user who signed in.
+- **Four skills** that tell the assistant how to use those tools:
+  - `get-started` finds its way around a workspace and its boards.
+  - `organize-assets` searches, tags, sets custom fields, moves and groups assets.
+  - `upload-files` adds files from a URL, from bytes, or from Google Drive and Dropbox.
+  - `share-and-publish` creates share links, published pages and permanent URLs.
 
-Asset and board operations including: `list_assets`, `search_assets`,
-`ai_search`, `get_asset`, `move_assets`, `copy_assets`, `change_asset_tags`,
-`update_asset_status`, `create_board`, `update_board`, `list_boards`,
-`list_board_children`, `share_asset`, `share_board`, `create_comment`,
-`list_documentation`, `read_documentation`, and more.
+The plugin contains no executable code, hooks or scripts, and it runs nothing on your machine.
 
 ## Install
 
-```
-/plugin marketplace add playbook-labs/claude-plugins   # if not already added
-/plugin install playbook@playbook-plugins
-```
-
-Or via CLI:
+Claude Code:
 
 ```
-claude plugin marketplace add playbook-labs/claude-plugins
+claude plugin marketplace add playbook-labs/mcp-plugins
 claude plugin install playbook@playbook-plugins
 ```
 
-## Authenticate
+Claude on the web and the desktop app: open **Customize > Plugins**, choose **Add**, then **Add marketplace**, and enter `playbook-labs/mcp-plugins`.
 
-After install, run `/mcp`, pick the `playbook-creative` server, choose
-**Authenticate**, and complete the Playbook OAuth flow in the browser. Tokens do
-not expire (revoke from your Playbook account settings).
+Codex:
 
-## Note for local development
+```
+codex plugin marketplace add playbook-labs/mcp-plugins
+codex plugin add playbook@playbook-plugins
+```
 
-If you already registered the server manually (`claude mcp add playbook
-https://mcp.playbook.com`), remove that entry to avoid a duplicate connection:
+## Sign in
+
+The first time the assistant uses Playbook, a Playbook consent screen opens in your browser. Sign in and choose **Allow**. No API key is created, copied or stored in this plugin. In Claude Code you can also start this by running `/mcp`, picking the `playbook-creative` server and choosing **Authenticate**.
+
+The assistant can then do what your Playbook account can do, in the workspaces that account belongs to. To end access, revoke it from your Playbook account settings.
+
+## Data handling
+
+- Your requests to the assistant stay with the assistant. The plugin sends Playbook only the tool calls the assistant makes: a tool name and its arguments.
+- The server passes each call to Playbook's API and returns the result to the assistant.
+- Playbook records usage analytics for each tool call in PostHog, linked to your Playbook user: the tool name, how long it took, whether it failed, and its arguments with passwords, upload credentials, note text and descriptions removed. Tool results are not recorded.
+- Playbook's [privacy policy](https://www.playbook.com/privacy/) and [terms](https://www.playbook.com/terms/) apply.
+
+## What it cannot do
+
+It does not download a file's contents, read text inside an image, extract video captions, or render a board as a PDF.
+
+## Help
+
+- Full tool reference and setup for other clients: [dev.playbook.com/docs/guides/mcp](https://dev.playbook.com/docs/guides/mcp)
+- Support: [playbook.com/contact](https://www.playbook.com/contact) or support@playbook.com
+
+## If you added the server by hand before
+
+A server registered earlier with `claude mcp add` connects a second time next to the plugin. Remove the manual entry:
 
 ```
 claude mcp remove playbook
 ```
+
+## License
+
+MIT. See [LICENSE](./LICENSE).
