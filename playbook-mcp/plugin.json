@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "playbook",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Find, organize, upload, share and publish creative assets in your Playbook workspace.",
   "author": {
     "name": "Playbook",
@@ -17,7 +17,7 @@
       "interface": {
         "displayName": "Playbook",
         "shortDescription": "Find and organize your assets",
-        "longDescription": "Playbook is a digital asset manager for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into boards, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, and share a board through a link or a published page. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images, or extract video captions.",
+        "longDescription": "Playbook is a media backend for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into boards, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, and share a board through a link or a published page. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images, or extract video captions.",
         "developerName": "Playbook",
         "category": "Creativity",
         "capabilities": ["Search assets", "Organize boards", "Upload files", "Share and publish"],
@@ -39,9 +39,9 @@
           "positive": [
             {
               "description": "List the boards of the workspace",
-              "prompt": "What boards are in my Playbook workspace?",
+              "prompt": "List all the boards in my Playbook workspace, including nested ones.",
               "tools_triggered": "list_boards",
-              "expected_behavior": "Returns the titles of the boards in the test workspace, including Brand Kit."
+              "expected_behavior": "Returns the board titles of the test workspace: MCP Test at the top level, with Brand Kit, Product Photos and Campaign Drafts inside it."
             },
             {
               "description": "Keyword search for assets",
@@ -83,6 +83,7 @@
             }
           ]
         },
+        "demo_recording_url": "https://www.playbook.com/s/playbook/r83rbQfbPgB6Qu88k4Smtefx?assetToken=UWnkyfvTsQL83EAoGFsjkP43",
         "commerce": false,
         "commerce_description": "This plugin does not sell products or process payments."
       },

@@ -1,6 +1,6 @@
 # Playbook
 
-Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) workspace. Playbook is a digital asset manager for creative teams, and this plugin lets an assistant search your images, video and documents, organize them into boards, tag them, upload new files, review version history, and share a board through a link or a published page.
+Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) workspace. Playbook is a media backend for creative teams, and this plugin lets an assistant search your images, video and documents, organize them into boards, tag them, upload new files, review version history, and share a board through a link or a published page.
 
 ## What is in the plugin
 
