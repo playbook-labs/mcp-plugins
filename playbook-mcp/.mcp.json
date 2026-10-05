@@ -2,7 +2,7 @@
   "mcpServers": {
     "playbook-creative": {
       "type": "http",
-      "url": "https://mcp.playbook.com"
+      "url": "https://mcp.playbook.com/mcp"
     }
   }
 }
