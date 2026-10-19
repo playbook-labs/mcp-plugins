@@ -13,9 +13,13 @@ Playbook hosts small static web apps that show one board and its sub-boards to a
 2. Agree on the board with the user. An app publishes the board and all its sub-boards to anyone with the link, unapproved assets and uploader names included.
 3. `list_apps` to see the workspace's apps. Deploying to a slug the workspace already uses replaces that app's files, and a workspace holds at most 10 apps. If the user's board already has an app, ask whether to replace it or add another.
 
+## Uploads from visitors
+
+An app can take files from its visitors into its own board, through `playbook/upload` as the `hosted_apps` topic shows, but only while the board's share link allows uploads ("Allow uploads" or "Enable upload-only page" in the board's Share tab, a Pro feature). `share_board` with `enable_uploads: true` switches it on, but it also lets anyone with the board's share link upload, so ask the user first. Tell them that the app shows every visitor's files to every visitor.
+
 ## What an app cannot do
 
-An app only reads. It cannot upload, comment, approve, move assets or create versions, and it cannot reach any board but its own. When the user wants an app that writes to Playbook, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
+Apart from those uploads, an app only reads. It cannot comment, approve, move assets or create versions, and it cannot reach any board but its own. When the user wants an app that does any of that, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
 
 ## Deploy
 
