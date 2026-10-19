@@ -15,7 +15,7 @@ Playbook hosts small static web apps that show one board and its sub-boards to a
 
 ## Uploads from visitors
 
-An app can take files from its visitors into its own board, through `playbook/upload` as the `hosted_apps` topic shows, but only while the board's share link allows uploads ("Allow uploads" or "Enable upload-only page" in the board's Share tab, a Pro feature). `share_board` with `enable_uploads: true` switches it on, but it also lets anyone with the board's share link upload, so ask the user first. Tell them that the app shows every visitor's files to every visitor.
+An app can take files from its visitors into its own board, through `playbook/upload` as the `hosted_apps` topic shows, but only while the board's share link allows uploads ("Allow uploads" or "Enable upload-only page" in the board's Share tab, a Pro feature). `share_board` with `enable_uploads: true` switches it on, but it also lets anyone with the board's share link upload, so ask the user first. Leave the link without a password, an email form or a past expiry: any of them refuses every upload from the app. Tell them that the app shows every visitor's files to every visitor.
 
 ## What an app cannot do
 
