@@ -10,7 +10,7 @@ Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) wo
   - `organize-assets` searches, tags, sets custom fields, moves and groups assets.
   - `upload-files` adds files from a URL, from bytes, or from Google Drive and Dropbox.
   - `share-and-publish` creates share links, published pages and permanent URLs.
-  - `build-app` builds and hosts a small public web app over one board.
+  - `build-app` builds and hosts a small web app over one board, open to anyone, to the board's people or behind a password.
 
 The plugin contains no executable code, hooks or scripts, and it runs nothing on your machine.
 
