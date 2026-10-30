@@ -27,9 +27,13 @@ The board's own share settings do not protect the app. Ask the user which they w
 
 An app can take files from its visitors into its own board, through `playbook/upload` as the `hosted_apps` topic shows. In an app that is not public, a signed-in visitor who may upload to the board can always upload. Anyone else can upload only while the board's share link allows uploads ("Allow uploads" or "Enable upload-only page" in the board's Share tab, a Pro feature). `share_board` with `enable_uploads: true` switches it on, but it also lets anyone with the board's share link upload, so ask the user first. Leave the link without a password, an email form or a past expiry: any of them refuses every upload from the app. `share_board` clears a password (`password: ""`) and an expiry (`expiration_date: ""`); an email form only the user can switch off, in the Share tab. Tell them that the app shows every visitor's files to every visitor.
 
+## Changes from signed-in visitors
+
+In a `members` app, the page can also change the board's assets as the signed-in visitor, with that visitor's permissions in Playbook: title, description, status, custom fields and tags, approval, and comments. The `hosted_apps` topic lists the calls. A tracker, a review queue or an approval board fits here. Statuses and option fields take existing options only, and a multi-select field takes a list of them. The page can read the fields and their options itself (`playbook/api/custom_fields`, see the topic), or you can build them in from `list_custom_fields`.
+
 ## What an app cannot do
 
-Apart from those uploads, an app only reads. It cannot comment, approve, move assets or create versions, and it cannot reach any board but its own. When the user wants an app that does any of that, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
+An app cannot delete, move, copy or group assets, create versions, change boards or sharing, create custom fields or their options, or reach any board but its own. Public and password apps change nothing but uploads. When the user wants an app that does any of that, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
 
 ## Deploy
 

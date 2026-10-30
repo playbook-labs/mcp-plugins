@@ -20,7 +20,7 @@ Look at candidates with `get_asset_previews` before acting on a visual judgement
 - The built-in Status field: `update_asset_status`.
 - Approval and scheduled visibility for up to 1000 assets: `set_asset_approval`.
 
-Custom fields have exact names and, for select fields, exact option names. Call `list_custom_fields` first and use the names it returns. A field or option the workspace does not have comes back as an error that lists the valid ones; the rest of that update is still saved. `create_custom_field` defines a new field, and called with the name of an existing select field it replaces that field's options, deleting any left out.
+Custom fields have exact names and, for option fields, exact option names. Call `list_custom_fields` first and use the names it returns. A `multi_select` field takes a list (`["Web", "iOS"]`) and then holds exactly those options; every other field takes one value, and `""` or `[]` clears a field. A field or option the workspace does not have comes back as an error that lists the valid ones; that field keeps its previous value and the rest of the update is still saved. `create_custom_field` defines a new field (`field_type: "multi_select"` for one that holds several options), and called with the name of an existing option field it replaces that field's options, deleting any left out.
 
 ## Restructure
 
