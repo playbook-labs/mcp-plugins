@@ -7,7 +7,7 @@ Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) wo
 - **A connection to Playbook's hosted MCP server** at `https://mcp.playbook.com/mcp`. The tools run on that server, which calls Playbook's REST API as the user who signed in.
 - **Five skills** that tell the assistant how to use those tools:
   - `get-started` finds its way around a workspace and its boards.
-  - `organize-assets` searches, tags, sets custom fields, moves and groups assets.
+  - `organize-assets` searches, tags, sets custom fields, moves, archives and groups assets.
   - `upload-files` adds files from a URL, from bytes, or from Google Drive and Dropbox.
   - `share-and-publish` creates share links, published pages and permanent URLs.
   - `build-app` builds and hosts a small web app over one board, open to anyone, to the board's people or behind a password.
