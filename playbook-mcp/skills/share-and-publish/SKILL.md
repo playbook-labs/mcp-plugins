@@ -9,7 +9,7 @@ Each option below makes content reachable by people outside the workspace. Say w
 
 ## A link to a board or an asset
 
-- `share_board` creates or updates a board's share link. It can set an expiry, restrict downloads, require a password, and with `enable_uploads` let visitors drop files onto the board.
+- `share_board` creates or updates a board's share link. It can set an expiry, restrict downloads, require a password, add a text watermark (`watermark_text`, with size, position, colour and opacity; an empty text removes it), and with `enable_uploads` let visitors drop files onto the board. A hosted app on the board follows the link's watermark and download settings.
 - `share_asset` creates or returns the link for a single asset.
 - `resolve_share_link` turns a board share link of the user's workspace back into its board.
 
