@@ -21,11 +21,15 @@ Playbook hosts small static web apps that show one board and its sub-boards at t
 - `members`: people who can view the board in Playbook, after they sign in.
 - `password`: visitors who give the `password` you pass with it, at least 8 characters, on plans with share-link passwords.
 
-The board's own share settings do not protect the app. Ask the user which they want when the board is not meant for everyone. A redeploy without `access` keeps the app's access; the user can also change it under Developer in Playbook's settings.
+The board's own share settings do not protect the app; only its watermark and downloads apply to it (below). Ask the user which they want when the board is not meant for everyone. A redeploy without `access` keeps the app's access; the user can also change it under Developer in Playbook's settings.
 
 ## Uploads from visitors
 
 An app can take files from its visitors into its own board, through `playbook/upload` as the `hosted_apps` topic shows. In an app that is not public, a signed-in visitor who may upload to the board can always upload. Anyone else can upload only while the board's share link allows uploads ("Allow uploads" or "Enable upload-only page" in the board's Share tab, a Pro feature). `share_board` with `enable_uploads: true` switches it on, but it also lets anyone with the board's share link upload, so ask the user first. Leave the link without a password, an email form or a past expiry: any of them refuses every upload from the app. `share_board` clears a password (`password: ""`) and an expiry (`expiration_date: ""`); an email form only the user can switch off, in the Share tab. Tell them that the app shows every visitor's files to every visitor.
+
+## Watermark and downloads
+
+An app follows the board's share link. When the link has a watermark, every image the app reads carries it, and the answers hold no clean address. When the link is on and allows downloads, visitors can download the original files through `playbook/download`, typing the link's password if it has one, like a PIN; the `hosted_apps` topic shows the call. For a gallery that shows watermarked previews and hands out originals behind a PIN, set both with `share_board` (`watermark_text`, `disable_downloads: false`, `password`), and ask the user first: the same settings apply to the share page itself. Video is not watermarked.
 
 ## Changes from signed-in visitors
 
