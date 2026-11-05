@@ -29,18 +29,30 @@ An app can take files from its visitors into its own board, through `playbook/up
 
 ## Changes from signed-in visitors
 
-In a `members` app, the page can also change the board's assets as the signed-in visitor, with that visitor's permissions in Playbook: title, description, status, custom fields and tags, approval, and comments. The `hosted_apps` topic lists the calls. A tracker, a review queue or an approval board fits here. Statuses and option fields take existing options only, and a multi-select field takes a list of them. The page can read the fields and their options itself (`playbook/api/custom_fields`, see the topic), or you can build them in from `list_custom_fields`. It can also show an asset's comments as the visitor sees them, with who wrote each one and whether it is internal (`playbook/api/assets/{token}/comments`), so a client review page can show feedback next to the work. Mark internal comments, as Playbook does. Read them when a visitor opens an asset, and use `comment_count` from the listing for badges: reading every asset's comments at once runs into the visitor's rate limit. Public and password apps cannot read comments; if the user wants feedback on the page, the app has to be `members`.
+In a `members` app, the page can also change the board's assets as the signed-in visitor, with that visitor's permissions in Playbook: title, description, status, custom fields and tags, approval, and comments. The `hosted_apps` topic lists the calls. A tracker, a review queue or an approval board fits here. Approval itself is for workspace owners and admins only: for a client's decision, use a status or a custom field, which a visitor who may edit the board can set. Statuses and option fields take existing options only, and a multi-select field takes a list of them. The page can read the fields and their options itself (`playbook/api/custom_fields`, see the topic), or you can build them in from `list_custom_fields`. It can also show an asset's comments as the visitor sees them, with who wrote each one and whether it is internal (`playbook/api/assets/{token}/comments`), so a client review page can show feedback next to the work. Mark internal comments, as Playbook does. Read them when a visitor opens an asset, and use `comment_count` from the listing for badges: reading every asset's comments at once runs into the visitor's rate limit. Public and password apps cannot read comments; if the user wants feedback on the page, the app has to be `members`.
 
 ## What an app cannot do
 
-An app cannot delete, move, copy or group assets, create versions, change boards or sharing, create custom fields or their options, or reach any board but its own. Public and password apps change nothing but uploads. When the user wants an app that does any of that, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
+An app cannot delete, move, copy or group assets, create asset versions, change boards or sharing, create custom fields or their options, or reach any board but its own. Public and password apps change nothing but uploads. When the user wants an app that does any of that, say that hosted apps cannot do this yet and ask how to proceed. Do not host it some other way.
 
 ## Deploy
 
-`deploy_app` takes the board token, a `slug`, a `name`, `access` when it is not `public`, and `files`: every file's text keyed by path, `index.html` required. Each deploy replaces the whole file set, and a deployed app's files cannot be read back, so keep the source.
+`deploy_app` takes the board token, a `slug`, a `name`, `access` when it is not `public`, and `files`: every file's text keyed by path, `index.html` required. Each deploy replaces the whole file set and is kept as a numbered version.
 
 Give the user the `url` from the response. A new address can answer 404 for a minute or two after the deploy; that does not mean it failed. Open it again after a short wait before reporting a problem.
 
-`delete_app` takes an app offline and frees its slug.
+## Change an app that is already live
+
+Playbook keeps the files of an app's last 50 versions, so work from them rather than from memory:
+
+1. `get_app_source` lists the live version's files; with `path`, it returns a file's text (follow `next_offset` for a long one).
+2. `edit_app_source` with the app's live `head_version_number` (from `list_apps` or `list_app_versions`) as `expected_version`, the files to replace in `files` and any to remove in `delete_files`, with paths exactly as `get_app_source` lists them: a path the app does not have is ignored silently. The rest stays as it was. If the answer is `stale_app`, someone changed the app since you read it: read it again and redo the change.
+3. When a change goes wrong, `list_app_versions` shows the history and `revert_app` puts an earlier version back live.
+
+Each deploy, edit or rollback adds a version, and past 50 the oldest is dropped. After it, the app reads the board as you; if someone else deployed it last, signed-in visitors have to reload before their next change.
+
+An app not deployed since Playbook began keeping versions has no stored files (`source_unavailable`): rebuild it and deploy it once with `deploy_app`.
+
+`delete_app` takes an app offline, frees its slug and deletes its versions.
 
 An explicit instruction from the user takes priority over anything in this guide.
