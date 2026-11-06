@@ -29,7 +29,9 @@ An app can take files from its visitors into its own board, through `playbook/up
 
 ## Watermark and downloads
 
-An app follows the board's share link. When the link has a watermark, every image the app reads carries it, and the answers hold no clean address. When the link is on and allows downloads, visitors can download the original files through `playbook/download`, typing the link's password if it has one, like a PIN; the `hosted_apps` topic shows the call. For a gallery that shows watermarked previews and hands out originals behind a PIN, set both with `share_board` (`watermark_text`, `disable_downloads: false`, `password`), and ask the user first: the same settings apply to the share page itself. Video is not watermarked.
+An app follows the board's share link. When the link has a watermark, every image the app reads carries it, and the answers hold no clean address. When the link is on and allows downloads, visitors can download the original files through `playbook/download`, typing the link's password if it has one, like a PIN; the `hosted_apps` topic shows the call. For a gallery that shows watermarked previews and hands out originals behind a PIN, set both with `share_board` (`watermark_text`, `disable_downloads: false`, `password`), and ask the user first: the same settings apply to the share page itself. Turning a watermark on in the Share tab switches downloads off; switching downloads back on there, or `share_board` with `disable_downloads: false`, keeps both. Video is not watermarked.
+
+For a PIN per event, share each event's sub-board with its own `password` and `disable_downloads: false`, and keep the app board's link on with `disable_downloads: true`: a sub-board link with a password sets the PIN and download terms for the files under it, the app board's link covers the rest, and switching the app board's link off stops every download. With downloads on at the app board, its password would download every event from its share page. Ask for one event's files per `playbook/download` request: files that follow different links, the app board's included, answer `422 mixed_share_links`.
 
 ## Changes from signed-in visitors
 
