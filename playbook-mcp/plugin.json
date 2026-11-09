@@ -88,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial release: search, organize, upload, version, share and publish assets in a Playbook workspace."
+        "release_notes": "Adds building and hosting web apps on a board, with members-only or password access, versions and rollback. Adds uploading files you hold, archive and comment management, watermarks, and per-board share-link passwords. Clearer skill descriptions."
       }
     }
   }
