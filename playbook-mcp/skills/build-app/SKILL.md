@@ -9,9 +9,18 @@ Playbook hosts small static web apps that show one board and its sub-boards at t
 
 ## Before writing any code
 
-1. `read_documentation` with topic `hosted_apps`. It is the reference for the files an app may contain, the data calls it can make, the fields each asset row carries, and the starter app. Build from it, not from memory of the REST API: an app reads through its own relative `playbook/api/...` address with no key.
-2. Agree on the board with the user, and on who may open the app. Whoever gets in sees the board and all its sub-boards, unapproved assets and uploader names included.
+1. Ask the user three things, unless they already said: **who opens the app and what they do there** (look, upload, approve), **which board** it shows, and **who may open it** (below). Whoever gets in sees the board and all its sub-boards, unapproved assets and uploader names included.
+2. `read_documentation` with topic `hosted_apps`, then the recipe topic closest to the answer: `hosted_apps_recipe_gallery` to show a board, `hosted_apps_recipe_upload_brief` for one person sending files against a brief, `hosted_apps_recipe_review` for the board's people approving work. The guide is the reference for the files, the data calls and the fields of an asset; the recipe is a complete, designed app to copy and change. Build from them, not from memory of the REST API: an app reads through its own relative `playbook/api/...` address with no key.
 3. `list_apps` to see the workspace's apps. Deploying to a slug the workspace already uses replaces that app's files, and the workspace's plan caps how many apps it may have. If the user's board already has an app, ask whether to replace it or add another.
+
+## Build, look, fix, then show
+
+1. **Start from the recipe's files** and change what the request needs. Keep what its "Keep" list names: relative URLs, retries, showing an answer instead of reading the board again, the theme tokens.
+2. **Keep content that changes on the board.** Put a brief, captions, prices and names in the board's description, asset titles and fields, and have the page read them; tell the user where to edit them.
+3. **Make it the user's own.** Give the app the user's name, words, colours and type. When reusing an app built for someone else, change all of them: only the code that reads the board carries over.
+4. **Deploy, then read `warnings`** in the answer. Each names a likely mistake in the files; fix it and deploy again.
+5. **Look at it before the user does.** Call `preview_app` for screenshots of the live app at 390 px and 1280 px; it opens password and members apps too, as a visitor who changes nothing. If you can open a browser, also check light and dark and each state: loading, empty, an error, done. Without either, go through the recipe's "Check it" list against your files. Fix what looks off and deploy again.
+6. **Then give the user the link**, with what they can change on the board without you.
 
 ## Who may open the app
 
