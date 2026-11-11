@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "playbook",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Find, organize, upload, share and publish creative assets in your Playbook workspace.",
   "author": {
     "name": "Playbook",
@@ -17,7 +17,7 @@
       "interface": {
         "displayName": "Playbook",
         "shortDescription": "Find and organize your assets",
-        "longDescription": "Playbook is a media backend for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into boards, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, and share a board through a link or a published page. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images, or extract video captions.",
+        "longDescription": "Playbook is a media backend for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into boards, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, and share a board through a link, a published page or an email invitation. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images, or extract video captions.",
         "developerName": "Playbook",
         "category": "Creativity",
         "capabilities": ["Search assets", "Organize boards", "Upload files", "Share and publish"],
@@ -74,8 +74,8 @@
               "prompt": "Download Logo Primary from Playbook and read me the raw file contents."
             },
             {
-              "description": "Sending email is outside the plugin",
-              "prompt": "Email the Brand Kit board to my whole team from Playbook."
+              "description": "Unpublishing a page is not supported",
+              "prompt": "Unpublish the published page of my Brand Kit board."
             },
             {
               "description": "Access outside the connected account",
@@ -88,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Adds building and hosting web apps on a board, with members-only or password access, versions and rollback. Adds uploading files you hold, archive and comment management, watermarks, and per-board share-link passwords. Clearer skill descriptions."
+        "release_notes": "Adds inviting people to a board by email with view, share or edit rights, including clients of a members-only app."
       }
     }
   }
