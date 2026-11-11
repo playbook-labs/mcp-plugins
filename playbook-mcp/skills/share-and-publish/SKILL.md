@@ -13,6 +13,10 @@ Each option below makes content reachable by people outside the workspace. Say w
 - `share_asset` creates or returns the link for a single asset.
 - `resolve_share_link` turns a board share link of the user's workspace back into its board.
 
+## Access for named people
+
+`invite_to_board` invites people to a board by email as guests, with `view`, `share` or `edit` rights. Each new address gets an email with a sign-in link; a guest already on the board gets the new role instead. Unlike a link, only the people invited get in. Confirm the addresses and the role with the user first, since every address receives an email and `edit` is full control of the board.
+
 ## A published page
 
 `publish_board` turns a board into a public page, with the same expiry, download and password controls. Pass a `template` to give it a design; the template ids come from `get_page_elements_catalog`.
