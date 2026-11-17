@@ -1,6 +1,6 @@
 ---
 name: upload-files
-description: Add content to Playbook - upload a file from a URL or from bytes you hold, import folders from Google Drive or Dropbox, add notes and colour swatches, or store a new version of an existing asset. Use when the user wants to upload, import, save or add something to a Playbook board.
+description: Add content to Playbook - upload a file from a URL or from bytes you hold, import Google Drive or Dropbox folders, add notes and colour swatches, or store a new version of an existing asset. Use when the user wants to upload, import, save or add something to a Playbook folder.
 ---
 
 # Add files to Playbook
@@ -9,7 +9,7 @@ Pick the path by where the file is now.
 
 ## The file is at a URL Playbook can fetch
 
-`upload_from_url` takes one public URL and a board. It returns a skeleton asset at once and Playbook fetches the file in the background, so read the asset back with `get_asset` before reporting the upload as finished. `upload_from_urls` takes up to 100 URLs for the same board. Playbook fetches anonymously: a link behind a login or an expired signed URL fails, and a very large or slow source runs out of time.
+`upload_from_url` takes one public URL and a folder. It returns a skeleton asset at once and Playbook fetches the file in the background, so read the asset back with `get_asset` before reporting the upload as finished. `upload_from_urls` takes up to 100 URLs for the same folder. Playbook fetches anonymously: a link behind a login or an expired signed URL fails, and a very large or slow source runs out of time.
 
 ## You hold the file as bytes
 
@@ -24,18 +24,18 @@ For several files use `create_upload_urls` and `finish_uploads`, and pass the `b
 ## The file is in Google Drive or Dropbox
 
 1. `list_import_sources` returns the connections the user has made, and a `connect_url`.
-2. `import_from_google_drive` or `import_from_dropbox` takes 1 to 20 folders and a board.
+2. `import_from_google_drive` or `import_from_dropbox` takes 1 to 20 Google Drive or Dropbox folders and the Playbook folder to put them in.
 3. `get_import` reports progress. Poll it until the status is `completed` or `canceled`.
 
 A person connects Drive or Dropbox once in the Playbook web app. When no connection exists, give the user the `connect_url`.
 
 ## None of these is possible
 
-`share_board` with `enable_uploads` returns a link where a person can drop files onto the board.
+`share_folder` with `enable_uploads` returns a link where a person can drop files onto the folder.
 
 ## Content that is not a file
 
-- `create_note` adds a text note to a board.
+- `create_note` adds a text note to a folder.
 - `create_colors` adds up to 100 colour swatches from hex codes or Pantone names; two or more become a palette.
 
 ## A new version of an existing asset

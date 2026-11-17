@@ -1,16 +1,16 @@
 # Playbook
 
-Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) workspace. Playbook is a media backend for creative teams, and this plugin lets an assistant search your images, video and documents, organize them into boards, tag them, upload new files, review version history, and share a board through a link or a published page.
+Connect Claude, ChatGPT or Codex to your [Playbook](https://www.playbook.com) workspace. Playbook is a media backend for creative teams, and this plugin lets an assistant search your images, video and documents, organize them into folders, tag them, upload new files, review version history, and share a folder through a link or a published page.
 
 ## What is in the plugin
 
 - **A connection to Playbook's hosted MCP server** at `https://mcp.playbook.com/mcp`. The tools run on that server, which calls Playbook's REST API as the user who signed in.
 - **Five skills** that tell the assistant how to use those tools:
-  - `get-started` finds its way around a workspace and its boards.
+  - `get-started` finds its way around a workspace and its folders.
   - `organize-assets` searches, tags, sets custom fields, moves, archives and groups assets.
   - `upload-files` adds files from a URL, from bytes, or from Google Drive and Dropbox.
   - `share-and-publish` creates share links, published pages and permanent URLs.
-  - `build-app` builds and hosts a small web app over one board, open to anyone, to the board's people or behind a password.
+  - `build-app` builds and hosts a small web app over one folder, open to anyone, to the folder's people or behind a password.
 
 The plugin contains no executable code, hooks or scripts, and it runs nothing on your machine.
 
@@ -47,7 +47,7 @@ The assistant can then do what your Playbook account can do, in the workspaces t
 
 ## What it cannot do
 
-It does not download a file's contents, read text inside an image, extract video captions, or render a board as a PDF.
+It does not download a file's contents, read text inside an image, extract video captions, or render a folder as a PDF.
 
 ## Help
 
