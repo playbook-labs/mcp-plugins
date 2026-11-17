@@ -23,12 +23,13 @@ Board and asset tokens belong to one workspace. Read them again from `list_board
 - Share links, published pages and permanent URLs: the `share-and-publish` skill.
 - A hosted web app over a board, such as a gallery or catalogue: the `build-app` skill.
 - Comments: `get_comments` and `create_comment`. People: `list_members`.
+- What a PDF or Illustrator file says: `read_asset_text`.
 - Anything about the API itself: `list_documentation` and `read_documentation`.
 
 ## What Playbook cannot do here
 
 - Hand over a file's bytes. A permalink or a `display_url` is the only way to reach a file.
-- Read the text inside an image or extract captions from a video.
+- Read the text inside an image or a scanned PDF, or extract captions from a video.
 - Render a board as a PDF or a contact sheet.
 - Turn a published-page or permalink URL back into a board or asset. Find the item by title instead. A board share link is the exception: `resolve_share_link` returns its board.
 
