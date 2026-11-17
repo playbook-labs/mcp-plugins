@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "playbook",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "description": "Find, organize, upload, share and publish creative assets in your Playbook workspace.",
   "author": {
     "name": "Playbook",
@@ -88,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Adds inviting people to a board by email with view, share or edit rights, including clients of a members-only app."
+        "release_notes": "Hosted apps can take guests without a Playbook account — by name or by a personal PIN — who reserve, approve, RSVP or vote through the actions the app declares; adds guest and answer tools, members-only fields for their contacts, and recipes for a client approval, a garage sale and a workshop RSVP. New apps open only to the board's people unless asked otherwise."
       }
     }
   }
