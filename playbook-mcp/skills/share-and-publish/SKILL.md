@@ -1,25 +1,25 @@
 ---
 name: share-and-publish
-description: Share Playbook content outside the workspace - create a share link for a board or an asset, publish a board as a designed page, and mint permanent public URLs for files. Use when the user wants to send, share, publish, present or embed boards or assets from Playbook.
+description: Share Playbook content outside the workspace - create a share link for a folder or an asset, publish a folder as a designed page, and mint permanent public URLs for files. Use when the user wants to send, share, publish, present or embed folders or assets from Playbook.
 ---
 
 # Share and publish from Playbook
 
 Each option below makes content reachable by people outside the workspace. Say what will become visible and to whom before making the call, and report the resulting URL together with its expiry or password.
 
-## A link to a board or an asset
+## A link to a folder or an asset
 
-- `share_board` creates or updates a board's share link. It can set an expiry, restrict downloads, require a password, add a text watermark (`watermark_text`, with size, position, colour and opacity; an empty text removes it), and with `enable_uploads` let visitors drop files onto the board. A hosted app on the board follows the link's watermark and download settings.
+- `share_folder` creates or updates a folder's share link. It can set an expiry, restrict downloads, require a password, add a text watermark (`watermark_text`, with size, position, colour and opacity; an empty text removes it), and with `enable_uploads` let visitors drop files onto the folder. A hosted app on the folder follows the link's watermark and download settings.
 - `share_asset` creates or returns the link for a single asset.
-- `resolve_share_link` turns a board share link of the user's workspace back into its board.
+- `resolve_share_link` turns a folder share link of the user's workspace back into its folder.
 
 ## Access for named people
 
-`invite_to_board` invites people to a board by email as guests, with `view`, `share` or `edit` rights. Each new address gets an email with a sign-in link; a guest already on the board gets the new role instead. Unlike a link, only the people invited get in. Confirm the addresses and the role with the user first, since every address receives an email and `edit` is full control of the board.
+`invite_to_folder` invites people to a folder by email as guests, with `view`, `share` or `edit` rights. Each new address gets an email with a sign-in link; a guest already on the folder gets the new role instead. Unlike a link, only the people invited get in. Confirm the addresses and the role with the user first, since every address receives an email and `edit` is full control of the folder.
 
 ## A published page
 
-`publish_board` turns a board into a public page, with the same expiry, download and password controls. Pass a `template` to give it a design; the template ids come from `get_page_elements_catalog`.
+`publish_folder` turns a folder into a public page, with the same expiry, download and password controls. Pass a `template` to give it a design; the template ids come from `get_page_elements_catalog`.
 
 To change the design afterwards:
 
@@ -39,6 +39,6 @@ Limits: a page whose elements have been edited cannot switch to a different temp
 
 Use a permalink when a URL must keep working, for example an image in a document, on a website or in another tool. An asset's `display_url` is signed and expires, so it is only for looking at something now.
 
-A permalink serves a file, not a web page: an HTML file behind one does not run. To host a page or app over a board, use the `build-app` skill.
+A permalink serves a file, not a web page: an HTML file behind one does not run. To host a page or app over a folder, use the `build-app` skill.
 
 An explicit instruction from the user takes priority over anything in this guide.
