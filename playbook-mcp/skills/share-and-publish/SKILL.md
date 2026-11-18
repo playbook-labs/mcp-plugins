@@ -27,7 +27,7 @@ To change the design afterwards:
 2. `add_page_element`, `update_page_element`, `move_page_element`, `delete_page_element` and `reorder_page_slot` change one thing each. `apply_page_operations` applies several in one call.
 3. `update_page_settings` sets the page's background colour and typography.
 
-`get_page_elements_catalog` lists the element types by name; pass `element_types` to get the props of the ones you need. `update_page_element` replaces the whole element, so send its full `props` back.
+`get_page_elements_catalog` lists the element types by name, and with `element_types` it also describes the props of those types. `update_page_element` replaces the whole element, so include every prop in the update, not only the changed ones.
 
 Pass the `version_token` as `expected_version_token` on each write and use the new token the write returns for the next one. The public page can keep showing the old version for up to an hour after a change.
 
