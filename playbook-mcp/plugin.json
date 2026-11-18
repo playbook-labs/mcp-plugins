@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "playbook",
-  "version": "0.5.1",
+  "version": "0.7.0",
   "description": "Find, organize, upload, share and publish creative assets in your Playbook workspace.",
   "author": {
     "name": "Playbook",
@@ -17,7 +17,7 @@
       "interface": {
         "displayName": "Playbook",
         "shortDescription": "Find and organize your assets",
-        "longDescription": "Playbook is a media backend for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into folders, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, and share a folder through a link, a published page or an email invitation. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images, or extract video captions.",
+        "longDescription": "Playbook is a media backend for creative teams. This plugin connects your Playbook workspace so you can search images, video and documents by keyword or by what they show, organize them into folders, tag them and fill in custom fields, upload files from a URL, Google Drive or Dropbox, review version history, read the text of PDFs, and share a folder through a link, a published page or an email invitation. It acts as the signed-in Playbook user and reaches only the workspaces that account belongs to. It does not download file contents, read text inside images or scanned PDFs, or extract video captions.",
         "developerName": "Playbook",
         "category": "Creativity",
         "capabilities": ["Search assets", "Organize folders", "Upload files", "Share and publish"],

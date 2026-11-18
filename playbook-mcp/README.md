@@ -47,7 +47,7 @@ The assistant can then do what your Playbook account can do, in the workspaces t
 
 ## What it cannot do
 
-It does not download a file's contents, read text inside an image, extract video captions, or render a folder as a PDF.
+It reads the text of PDF and Illustrator files, but does not download a file's contents, read text inside an image or a scanned PDF, extract video captions, or render a folder as a PDF.
 
 ## Help
 
