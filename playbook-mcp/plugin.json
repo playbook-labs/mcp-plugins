@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "playbook",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Find, organize, upload, share and publish creative assets in your Playbook workspace.",
   "author": {
     "name": "Playbook",
@@ -88,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Boards are now called folders, and sub-boards subfolders. The skills use the new tool names (list_folders, create_folder, share_folder and the rest). The old board tool names still work, so existing setups, saved prompts and permissions keep running."
+        "release_notes": "Uploads of files the assistant holds now take up to 2 GB: above 100 MB a file goes on its own, in slices. The get-started skill points to get_asset_download_urls for an asset's original file."
       }
     }
   }
