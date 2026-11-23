@@ -28,7 +28,7 @@ Folder and asset tokens belong to one workspace. Read them again from `list_fold
 
 ## What Playbook cannot do here
 
-- Hand over a file's bytes. A permalink or a `display_url` is the only way to reach a file.
+- Hand over a file's bytes. `get_asset_download_urls` returns a URL for the original file that expires within about a day; a permalink gives a URL that lasts, and a `display_url` a preview.
 - Read the text inside an image or a scanned PDF, or extract captions from a video.
 - Render a folder as a PDF or a contact sheet.
 - Turn a published-page or permalink URL back into a folder or asset. Find the item by title instead. A folder share link is the exception: `resolve_share_link` returns its folder.

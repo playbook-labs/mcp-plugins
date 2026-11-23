@@ -15,11 +15,11 @@ Pick the path by where the file is now.
 
 A file generated locally, returned as base64 by another tool, or sitting on disk:
 
-1. `create_upload_url` returns a one-time storage address and the exact request to make.
-2. Send the bytes with that request. One request carries up to 100 MB.
+1. `create_upload_url` returns a one-time storage address and the exact requests to make.
+2. Make every request it returns, in order. Up to 100 MB the bytes go in a single request; a larger file, up to 2 GB, goes in slices, one request each. The tool's note says how to resume a slice that was stored only in part or failed.
 3. `finish_upload` turns the stored bytes into an asset.
 
-For several files use `create_upload_urls` and `finish_uploads`, and pass the `batch_id` from the first to the second. When a batch finishes only in part, the result says which files became assets; follow it instead of repeating the whole call, which would create duplicates.
+For several files of up to 100 MB each use `create_upload_urls` and `finish_uploads`, and pass the `batch_id` from the first to the second; a larger file goes on its own through `create_upload_url`. When `finish_uploads` fails, some files may already be assets: check the folder with `list_assets` and follow the recovery steps in the error instead of repeating the whole call, which would create duplicates.
 
 ## The file is in Google Drive or Dropbox
 
